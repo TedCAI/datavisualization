@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<link rel="stylesheet" href="css/style.css" type="text/css" media="screen, projection"/>
+<title>Histogram For the UK Tourism</title>
+<script type='text/javascript' src='js/jquery.min.js'></script>
+<script type="text/javascript" language="javascript" src="js/jquery.dropdown.js"></script>
+
+
+<style>
+
+body {
+		text-align:center;
+  font: 10px sans-serif;
+  	background-color: #FC6;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.label {
+	font-size: 3em;
+}
+
+.bar {
+  fill: steelblue;
+}
+
+.x.axis path {
+  display: none;
+}
+
+.y.axis line {
+  stroke: #fff;
+  stroke-opacity: .2;
+  shape-rendering: crispEdges;
+}
+
+.y.axis .zero line {
+  stroke: #000;
+  stroke-opacity: 1;
+}
+
+.axis text {
+	font-family: "Arial Black", Gadget, sans-serif;
+	font-size : 1.5em;
+}
+</style>
+<body>
+
+	
+<div id="page-wrap"><br /><br />
+  <form name="form1" method="post" action="">
+    <p><strong>Data Visualization of the UK Tourism </strong></p>
+  </form>
+  <ul class="dropdown">
+  <li><a>Chart type</a>
+      <ul class="sub_menu">
+        <li><a href="pie-chart.html">Pie chart</a></li>
+        <li><a href="histogram.html">Histrogram</a></li>
+        <li><a href="line.html">Time-series</a></li>
+
+      </ul>
+</li>
+    <li><a>Data Type</a>
+      <ul class="sub_menu">
+      <form method="post" id="datatype">
+      
+      <li><label for="tVisitor">Total Visitor</label><input type="radio" id="tVisitor" name="tVisitor" onchange="dataChange(0)" checked/></li>
+      <li><label for="tMoney">Total Spend Money</label><input type="radio" id="tMoney" name="tMoney" onchange="dataChange(1)"  /></li>
+       <li><label for="tNights">Total Spend Nights</label><input type="radio" id="tNights" name="tNights" onchange="dataChange(2)"  /></li>
+       <li><label for="tSample">Total Sample Size </label><input type="radio" id="tSample" name="tSample" onchange="dataChange(3)"  /></li>
+       </ul>
+    </li>
+    </form>
+    <li><a>Year</a>
+      <ul class="sub_menu">
+      <form method="post" id="check1">
+      <li><label for="all"> all     </label><input type="checkbox" id="all" name="all"  data-on="Selected" data-off="Non-selected" onclick="changeAll('check1')" checked/></li>
+      <li><label for="year2004"> 2004</label><input type="checkbox" id="year2004" name="year2004"  data-on="Selected" data-off="Non-selected" onclick="change()" checked/></li>
+      <li><label for="year2005">2005 </label><input type="checkbox" id="year2005" name="year2005" onchange="change()" data-on="Selected" data-off="Non-selected" checked/></li>
+       <li><label for="year2006">2006 </label><input type="checkbox" id="year2006" name="year2006" onchange="change()" data-on="Selected" data-off="Non-selected" checked/></li>
+       <li><label for="year2007">2007 </label><input type="checkbox" id="year2007" name="year2007" onchange="change()"  data-on="Selected" data-off="Non-selected" checked/></li>
+       <li><label for="year2008">2008 </label><input type="checkbox" id="year2008" name="year2008" onchange="change()" data-on="Selected" data-off="Non-selected"  checked/></li>
+       <li><label for="year2009">2009 </label><input type="checkbox" id="year2009" name="year2009" onchange="change()" data-on="Selected" data-off="Non-selected" checked/></li>
+       <li><label for="year2010">2010 </label><input type="checkbox" id="year2010" name="year2010" onchange="change()" data-on="Selected" data-off="Non-selected" checked/></li>
+       <li><label for="year2010">2011 </label><input type="checkbox" id="year2011" name="year2011" onchange="change()" data-on="Selected" data-off="Non-selected" checked/></li>
+      </ul>
+    </li>
+    </form>
+    <li><a>Accommodation</a>
+      <ul class="sub_menu">
+      <form method="post" id="check2">
+      <li><label for="all"> all     </label><input type="checkbox" id="all" name="all"  data-on="Selected" data-off="Non-selected" onclick="changeAll('check2')" checked/></li>
+        <li><label for="a1">Bed & Breakfast </label><input type="checkbox" id="a1" name="Bed & Breakfast" data-on="Show effects" data-off="Hide effects" onchange="change()" checked /></li>
+        	<li><label for="a2">Camping/mobile home </label><input type="checkbox" id="a2" name="Camping/mobile home" checked  onchange="change()"/></li>
+	        <li><label for="a3">Free guest with relatives or friends </label><input type="checkbox" id="a3" name="Free guest with relatives or friends" checked onchange="change()"/></li>
+	        <li><label for="a4">Holiday village/Centre </label><input type="checkbox" id="a4" name="Holiday village/Centre" data-on="ON" data-off="OFF" checked onchange="change()"/></li>
+            <li><label for="a5">Hostel/university/school </label><input type="checkbox" id="a5" name="Hostel/university/school" data-on="Show effects" data-off="Hide effects" checked onchange="change()"/></li>
+        	<li><label for="a6">Hotel/guest house </label><input type="checkbox" id="a6" name="Hotel/guest house" checked  onchange="change()"/></li>
+	        <li><label for="a7">Other </label><input type="checkbox" id="a7" name="Other" checked onchange="change()"/></li>
+	        <li><label for="a8">Own home </label><input type="checkbox" id="a8" name="Own home" data-on="ON" data-off="OFF" checked onchange="change()"/></li>
+            <li><label for="a9">Paying guest family or friends house </label><input type="checkbox" id="a9" name="Paying guest family or friends house" data-on="Show effects" data-off="Hide effects" checked onchange="change()"/></li>
+        	<li><label for="a10">Rented house</label><input type="checkbox" id="a10" name="Rented house" checked  onchange="change()"/></li>
+	        
+      </ul>
+  </li>
+  </form>
+     
+ 
+</div>
+
+<br /><br />
+<form name="form2" method="post" action="">
+<a><br>
+  <br>
+  <br>
+ <br>
+  This page shows the data in percentage using histogram.</a>
+</form>
+<br /><br /><br /><br />
+
+
+<div style="width:550px;margin:20px auto;">
+
+</div>
+<script src="WEB-INF/lib/d3.v3.js"></script>
+<script src="WEB-INF/lib/d3.v3.min.js"></script>
+<script>
+var forma = document.getElementById("check1");
+var formb = document.getElementById("check2");
+
+
+
+for(var i = 0; i < forma.elements.length; i++){
+	var selection = forma.elements[i].checked;
+      //alert(selection);
+}
+
+var margin = {top: 20, right: 20, bottom: 30, left: 50},
+    width = 1024 - margin.left - margin.right,
+    height = 550 - margin.top - margin.bottom;
+
+var x0 = d3.scale.ordinal()
+    .rangeRoundBands([0, width], .5);
+
+var x1 = d3.scale.ordinal();
+
+var y = d3.scale.linear()
+    .range([height, 0]);
+
+var color = d3.scale.ordinal()
+    .range(["#98abc5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c19", "#ffaf00"]);
+
+var xAxis = d3.svg.axis()
+    .scale(x0)
+    .orient("bottom");
+
+var yAxis = d3.svg.axis()
+    .scale(y)
+    .orient("left")
+    .tickFormat(d3.format(".2s"));
+	
+var file = "WEB-INF/TotalVisitsA.csv";
+	
+change();
+
+function changeAll(d){
+	//alert(d);
+var getform = document.getElementById(d);	
+
+	if(getform.elements[0].checked === true){
+		for(var i = 1; i< getform.elements.length;i++){
+			getform.elements[i].checked = true;
+		}
+	}
+	change();
+}
+
+
+function change(){
+
+d3.selectAll("svg").remove();
+
+var l = "";
+
+switch(file){
+	case "WEB-INF/TotalVisitsA.csv": l = "Population(K people)";
+
+			break;
+	case "WEB-INF/TotalSpendA.csv": l = "Money(M £)";
+
+			break;
+	case "WEB-INF/TotalNightsA.csv": l = "Nights(K nights)";
+
+			break;
+	case "WEB-INF/TotalSampleSizeA.csv": l = "Population(K people)" ;
+
+			break;
+	}
+
+
+var svg = d3.select("body").append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+  .append("g")
+    .attr("transform", "translate(" + margin.left + ",0)");
+
+	d3.csv(file, function(error, data) {
+  ageNames1 = d3.keys(data[0]).filter(function(key) { return key !== "Year"; });
+ 
+  ageNames = ageNames1;
+  var count = 0;
+  var count1 = 0;
+  for(var i = 1; i< forma.elements.length;i++){
+	  if(forma.elements[i].checked !== true){
+		  ageNames.splice(count,1);
+		  forma.elements[0].checked = false;
+		  count--;
+	  }
+	  count++;
+  }
+
+ 
+  
+if(file == "WEB-INF/DetailData1.csv"){
+
+}
+else{
+	
+	 data.forEach(function(d) {	 
+    d.ages = ageNames.map(function(name) { return {name: name, value: +d[name]}; });
+  });
+}
+
+
+ var a = 0;  
+
+   for(var i = 1;i< formb.elements.length;i++){
+	   if(formb.elements[i].checked !== true){
+		  data.splice(a,1);
+		  a--;
+		  formb.elements[0].checked = false;
+	  }
+	  a++;
+   }
+   
+     x0.domain(data.map(function(d) { return d.Year; }));
+  x1.domain(ageNames).rangeRoundBands([0, x0.rangeBand()]);
+  y.domain([0, d3.max(data, function(d) { return d3.max(d.ages, function(d) { return d.value; }); })]);
+	
+var xx = svg.append("g")
+      .attr("class", "x axis")
+      .attr("transform", "translate(0," + height + ")");
+	  
+      xx.call(xAxis);
+	  
+
+	  xx.selectAll("text")
+	  .attr("transform", "rotate(-7.5)")
+	  .attr("dy","1.2em")
+	  .style("font-size","1.3em");
+
+  svg.append("g")
+      .attr("class", "y axis")
+      .call(yAxis)
+    .append("text")
+      .attr("transform", "rotate(-90)")
+      .attr("y", 6)
+      .attr("dy", ".71em")
+      .style("text-anchor", "end")
+      .text(l);
+
+ state = svg.selectAll(".state")
+      .data(data)
+    .enter().append("g")
+      .attr("class", "g")
+      .attr("transform", function(d) { return "translate(" + x0(d.Year) + ",0)"; });
+
+  state.selectAll("rect")
+      .data(function(d) { return d.ages; })
+    .enter().append("rect")
+      .attr("width", x1.rangeBand())
+      .attr("x", function(d) { return x1(d.name); })
+      .attr("y", function(d) { return y(d.value); })
+      .attr("height", function(d) { return height - y(d.value); })
+      .style("fill", function(d) { return color(d.name); });
+
+ var legend = svg.selectAll(".legend")
+      .data(ageNames.slice().reverse())
+    .enter().append("g")
+      .attr("class", "legend")
+      .attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
+
+  legend.append("rect")
+      .attr("x", width)
+      .attr("width", 18)
+      .attr("height", 18)
+      .style("fill", color);
+
+  legend.append("text")
+      .attr("x", width - 6)
+      .attr("y", 9)
+      .attr("dy", ".35em")
+      .style("text-anchor", "end")
+      .text(function(d) { return d; }); 
+
+	});
+  
+}
+
+function dataChange(f){
+	var getform = document.getElementById("datatype");
+	  for(var i = 0; i< getform.elements.length;i++){
+			getform.elements[i].checked = false;
+		}
+	getform.elements[f].checked = true;
+	switch(f){
+	case 0: file = "WEB-INF/TotalVisitsA.csv";
+	        change();
+			break;
+	case 1: file = "WEB-INF/TotalSpendA.csv";
+	        change();
+			break;
+	case 2: file = "WEB-INF/TotalNightsA.csv";
+	        change();
+			break;
+	case 3: file = "WEB-INF/TotalSampleSizeA.csv";
+	        change();
+			break;
+	case 4: file = "WEB-INF/DetailData1.csv";
+	        change();
+			break;
+	}
+	}
+	
+function accAdd(arg1,arg2){ 
+    var r1,r2,m; 
+    try{r1=arg1.toString().split(".")[1].length}catch(e){r1=0} 
+    try{r2=arg2.toString().split(".")[1].length}catch(e){r2=0} 
+    m=Math.pow(10,Math.max(r1,r2)) 
+    return (arg1*m+arg2*m)/m 
+}
+
+Number.prototype.add = function (arg){ 
+    return accAdd(arg,this); 
+}
+
+function change1(f){
+	var getform = document.getElementById("check3");
+	  for(var i = 0; i< getform.elements.length;i++){
+			getform.elements[i].checked = false;
+		}
+     getform.elements[f].checked = true;
+}
+</script>

@@ -1,0 +1,60 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<link rel="stylesheet" type="text/css" href="css/styles.css" />
+<link rel="stylesheet" type="text/css" href="jquery.tzCheckbox/jquery.tzCheckbox.css" />
+
+    </head>
+    <body>
+<script>
+function change(){
+	alert("a");
+}
+</script>
+<div id="page">
+
+	<form method="get" action="./">
+    	<ul>
+    		<li><label for="ch_effects">Display effects: </label><input type="checkbox" id="ch_effects"  onchange="change()" name="ch_effects" data-on="Show effects" data-off="Hide effects" /></li>
+        	<li><label for="ch_location">Enable location tracking: </label><input type="checkbox" id="ch_location" onchange="change()" name="ch_location" checked /></li>
+	        <li><label for="ch_showsearch">Include me in search results: </label><input type="checkbox" id="ch_showsearch" onchange="change()" name="ch_showsearch" /></li>
+	        <li><label for="ch_emails">Email notifications: </label><input type="checkbox" id="ch_emails" onchange="change()" name="ch_emails" data-on="ON" data-off="OFF" /></li>
+        </ul>
+    </form>
+</div>
+
+<script src="js/jquery.min.js"></script>
+<script src="jquery.tzCheckbox/jquery.tzCheckbox.js"></script>
+<script src="js/script.js"></script>
+
+ 
+        <div id="container1" style="height: 500px; width: 960px">
+        </div>
+
+
+
+        <!-- Datamaps Source -->
+        <script src= "http://datamaps.github.com/scripts/datamaps-all.js"></script>
+        
+    <script src="map.js"></script>
+
+    <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-36315921-1']);
+  _gaq.push(['_setDomainName', 'bl.ocks.org']);
+  _gaq.push(['_setAllowLinker', true]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+    </body>
+</html>

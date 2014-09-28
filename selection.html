@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<link rel="stylesheet" type="text/css" href="jquery.tzCheckbox/jquery.tzCheckbox.css" />
+<title>Solution for Long Dropdowns</title>
+<link rel="stylesheet" href="css/style.css" type="text/css" media="screen, projection"/>
+<script type='text/javascript' src='js/jquery.min1.js'></script>
+<script type="text/javascript" language="javascript" src="js/jquery.dropdown.js"></script>
+<script src="js/jquery.min.js"></script>
+
+<script src="js/script.js"></script>
+</head>
+<body>
+<div id="page-wrap">
+  <form method="get" action="./">
+  <br /><br /><br /><br /><br /><br />
+  
+  <ul class="dropdown">
+    <li><a>Year</a>
+      <ul class="sub_menu">
+       <li><label for="year2006">2006 </label><input type="checkbox" id="year2006" name="year2006" data-on="Selected" data-off="Non-selected" /></li>
+       <li><label for="year2007">2007 </label><input type="checkbox" id="year2007" name="year2007" data-on="Selected" data-off="Non-selected" /></li>
+       <li><label for="year2008">2008 </label><input type="checkbox" id="year2008" name="year2008" data-on="Selected" data-off="Non-selected" /></li>
+       <li><label for="year2009">2009 </label><input type="checkbox" id="year2009" name="year2009" data-on="Selected" data-off="Non-selected" /></li>
+       <li><label for="year2010">2010 </label><input type="checkbox" id="year2010" name="year2010" data-on="Selected" data-off="Non-selected" /></li>
+      </ul>
+    </li>
+    <li><a>源码下载</a>
+      <ul class="sub_menu">
+        <li><label for="ch_effects">Display effects: </label><input type="checkbox" id="ch_effects" name="ch_effects" data-on="Show effects" data-off="Hide effects" /></li>
+        	<li><label for="ch_location">Enable location tracking: </label><input type="checkbox" id="ch_location" name="ch_location" checked /></li>
+	        <li><label for="ch_showsearch">Include me in search results: </label><input type="checkbox" id="ch_showsearch" name="ch_showsearch" /></li>
+	        <li><label for="ch_emails">Email notifications: </label><input type="checkbox" id="ch_emails" name="ch_emails" data-on="ON" data-off="OFF" /></li>
+            <li><label for="ch_effects">Display effects: </label><input type="checkbox" id="ch_effects" name="ch_effects" data-on="Show effects" data-off="Hide effects" /></li>
+        	<li><label for="ch_location">Enable location tracking: </label><input type="checkbox" id="ch_location" name="ch_location" checked /></li>
+	        <li><label for="ch_showsearch">Include me in search results: </label><input type="checkbox" id="ch_showsearch" name="ch_showsearch" /></li>
+	        <li><label for="ch_emails">Email notifications: </label><input type="checkbox" id="ch_emails" name="ch_emails" data-on="ON" data-off="OFF" /></li>
+            <li><label for="ch_effects">Display effects: </label><input type="checkbox" id="ch_effects" name="ch_effects" data-on="Show effects" data-off="Hide effects" /></li>
+        	<li><label for="ch_location">Enable location tracking: </label><input type="checkbox" id="ch_location" name="ch_location" checked /></li>
+	        <li><label for="ch_showsearch">Include me in search results: </label><input type="checkbox" id="ch_showsearch" name="ch_showsearch" /></li>
+	        <li><label for="ch_emails">Email notifications: </label><input type="checkbox" id="ch_emails" name="ch_emails" data-on="ON" data-off="OFF" /></li>
+      </ul>
+    </li>
+    <li><a>广告代码</a>
+      <ul class="sub_menu">
+        <li><a href="#">Artificial Turf</a></li>
+        <li><a href="#">Benches &amp; Bleachers</a></li>
+        <li><a href="#">Communication Devices</a></li>
+        <li><a href="#">Dugouts</a></li>
+        <li><a href="#">Fencing &amp; Windscreen</a></li>
+      </ul>
+    </li>
+    
+  </ul>
+  </form>
+</div>
+
+<br /><br /><br /><br /><br /><br />
+<script>
+var forma = document.getElementById("check1");
+
+var formElement = document.forms[0].elements[0];
+//alert(forma.id);
+EventUtil.addHandler(formElement, "change", function(event){
+	event = EventUtil.getEvent(event);
+	var target = EventUtil.getTarget(event);
+	
+	alert(forma.id);
+});
+
+</script>
+<div style="width:550px;margin:20px auto;">
+
+</div>
+
+
+</body>
+</html>
+

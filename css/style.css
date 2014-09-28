@@ -1,0 +1,41 @@
+* 									{
+	margin: 0;
+	padding: 0;
+	text-align: center;
+}
+body								{ font: 1.7em Helvetica, Sans-Serif; } 
+html                                { overflow-y: scroll; }
+#page-wrap							{ width: 67.5em; height: 4em; margin: .95em auto; } 
+p                                   {
+	margin: 0 0 .5em 0;
+	text-align: center;
+	font-size: 3em;
+}
+a									{
+	text-decoration: none;
+	font-size: 1.7em;
+	text-align: center;
+}
+img                                 { vertical-align: middle; }
+a img                               { border: 0; 180}
+ul									{ list-style: none; }
+h1                                  { margin: 0 0 .625em 0; }
+
+/* 
+	LEVEL ONE
+*/
+ul.dropdown                         { position: relative; width: 100%; }
+ul.dropdown li                      { font-weight: bold; float: left; width: 16em; background: #ccc; position: relative; }
+ul.dropdown a:hover		            { color: #000; }
+ul.dropdown li a                    { display: block; padding: 1.25em .5em; color: #222; position: relative; z-index: 2000; }
+ul.dropdown li a:hover,
+ul.dropdown li a.hover              { background: #F3D673; position: relative; }
+
+
+/* 
+	LEVEL TWO
+*/
+ul.dropdown ul 						{ display: none; position: absolute; top: 0; left: 0; width: 180px; z-index: 1000; }
+ul.dropdown ul li 					{ font-weight: normal; background: #f6f6f6; color: #000; border-bottom: 1px solid #ccc; }
+ul.dropdown ul li a					{ display: block; background: #eee !important; } 
+ul.dropdown ul li a:hover			{ display: block; background: #F3D673 !important; } 
